@@ -10,17 +10,38 @@ const PasswordGenerator = () => {
 
     const passwd_creation = ()=>{
         let charset =  "";
-        if (upper) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        if (lower) charset += "abcdefghijklmnopqrstuvwxyz"
-        if (number) charset += "0123456789"
-        if (symbol) charset += `!@#$%^&*()-_=+[]{}|;:'",.<>?/`
-
         let generate_passwd = ""
-        for (let i = 0; i < length; i++) {
-            let r = Math.floor(Math.random()*charset.length);
-            generate_passwd += charset[r];
+        let increment = 0
+        if (lower || number || symbol || upper) {
+            for (let i = 0; i < length; i+=increment) {
+                increment = 0
+                if(upper) {
+                    charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    let r = Math.floor(Math.random()*charset.length);
+                    generate_passwd += charset[r];
+                    increment++;
+                }
+                if(lower) {
+                    charset = "abcdefghijklmnopqrstuvwxyz"
+                    let r = Math.floor(Math.random()*charset.length);
+                    generate_passwd += charset[r];
+                    increment++;
+                }
+                if(number) {
+                    charset = "0123456789"
+                    let r = Math.floor(Math.random()*charset.length);
+                    generate_passwd += charset[r];
+                    increment++;
+                }
+                if(symbol) {
+                    charset = `!@#$%^&*()-_=+[]{}|;:'",.<>?/`
+                    let r = Math.floor(Math.random()*charset.length);
+                    generate_passwd += charset[r];
+                    increment++;
+                }
+            }
+            setPassword(generate_passwd)
         }
-        setPassword(generate_passwd)
     }
 
     const copyToClipboard = () => {
