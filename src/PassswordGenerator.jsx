@@ -6,8 +6,28 @@ const PasswordGenerator = () => {
     const [lower, setLower] = useState(true);
     const [number, setNumber] = useState(true);
     const [symbol, setSymbol] = useState(true);
-    const [password, setPassword] = useState("passwd");
+    const [password, setPassword] = useState("");
 
+    const passwd_creation = ()=>{
+        let charset =  "";
+        if (upper) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        if (lower) charset += "abcdefghijklmnopqrstuvwxyz"
+        if (number) charset += "0123456789"
+        if (symbol) charset += `!@#$%^&*()-_=+[]{}|;:'",.<>?/`
+
+        let generate_passwd = ""
+        for (let i = 0; i < length; i++) {
+            let r = Math.floor(Math.random()*charset.length);
+            generate_passwd += charset[r];
+        }
+        setPassword(generate_passwd)
+    }
+
+    const copyToClipboard = () => {
+        // it makes to copy the password var into clipboard
+        navigator.clipboard.writeText(password);
+        alert("Password Copied")
+    }
         return (
         <div className="password-generator">
             <h2>Strong Password Generator </h2>
@@ -31,10 +51,10 @@ const PasswordGenerator = () => {
                 <input type="checkbox" id="symbol" checked={symbol} onChange={e=>setSymbol(e.target.checked)}/>
                 <label htmlFor="symbol">Include Symbol</label>
             </div>
-            <button className="generate-btn">Generate Password</button>
+            <button className="generate-btn" onClick={passwd_creation}>Generate Password</button>
             <div className="generate-password">
                 <input type="text" readOnly value={password} />
-                <button className="copy-btn">Copy</button>
+                <button className="copy-btn" onClick={copyToClipboard}>Copy</button>
             </div>
         </div>
     );

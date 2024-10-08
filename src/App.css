@@ -49,15 +49,17 @@ margin-top: 10px;
 border: 1px solid #ccc;
 outline: none;
 border-radius: 8px;
+font-size: 17px;
 }
 .generate-btn{
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 10px;
   background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 8px;
+  font-size: 15px;
 }
 .generate-btn:hover{
   background-color: #0056b3;
@@ -65,18 +67,24 @@ border-radius: 8px;
 .generate-password {
 border: 1px solid #ccc;
 display: flex;
-overflow: hidden;
+/* overflow: hidden; */
 border-radius: 4px;
 }
 input[type="text"]{
   border: none;
   flex:1;
   padding: 10px;
+  font-size: 18px;
 }
 .copy-btn{  
   padding: 15px;
   border: none;
-  background-color: green;
+  background-color: #008000;
   color: white;
   border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.copy-btn:hover {
+  background-color: rgb(32, 204, 10);
 }
