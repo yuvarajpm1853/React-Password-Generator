@@ -54,7 +54,7 @@ const PasswordGenerator = () => {
             <h2>Strong Password Generator </h2>
             <div className="input-group">
                 <label htmlFor="num">Password Length:</label>
-                <input type="number" id="num" value={length} onChange={e=> setLength(parseInt(e.target.value))}/>
+                <input type="number" id="num" min={8} max={16} value={length} onChange={e=> setLength(parseInt(e.target.value))}/>
             </div>
             <div className="checkbox-group">
                 <input type="checkbox" id="upper" checked={upper} onChange={e=>setUpper(e.target.checked)}/>
